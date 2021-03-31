@@ -1,0 +1,18 @@
+node{
+  stage('SCM'){
+    git 'https://github.com/prahaladpradhan/ci-calculator-app/ci-calculator-app'
+  }
+  stage('Compile Project'){
+    step{
+      withMaven(maven:'maven 3.6.0'){
+        sh 'mvn clean install'
+      }
+    }
+  }
+  stage('SonarQube Analysis'){
+	def mvnHome = tool name:'maven',type: 'maven'
+    withSonarQubeEnv('SonarQube1'){
+        sh "$(mvnHome)/bin/mvn sonar:sonar"
+    }
+  }
+}
