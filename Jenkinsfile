@@ -4,14 +4,14 @@ node{
   }
   stage('Compile Project'){
     step{
-      withMaven(maven:'maven 3.5.0'){
+      withMaven(maven:'maven 3.6.0'){
         sh 'mvn clean install'
       }
     }
   }
    stage('Deployment Project'){
     step{
-      withMaven(maven:'maven 3.5.0'){
+      withMaven(maven:'maven 3.6.0'){
         sh 'mvn deploy'
       }
     }
