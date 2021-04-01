@@ -9,11 +9,4 @@ node{
       }
     }
   }
-   stage('Deployment Project'){
-    step{
-      withMaven(maven:'maven 3.6.0'){
-        sh 'mvn deploy'
-      }
-    }
-  }
 }
